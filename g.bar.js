@@ -178,7 +178,8 @@
             stacktotal = [],
             multi = 0,
             colors = opts.colors || chartinst.colors,
-            len = values.length;
+            len = values.length,
+            max = opts.max || "auto";
 
         if (Raphael.is(values[0], "array")) {
             total = [];
@@ -221,7 +222,7 @@
             barvgutter = opts.vgutter == null ? 20 : opts.vgutter,
             stack = [],
             X = x + barhgutter,
-            Y = (height - 2 * barvgutter) / total;
+            Y = (max=='auto')?(height - 2 * barvgutter) / total : height / max;
 
         if (!opts.stretch) {
             barhgutter = Math.round(barhgutter);
@@ -466,7 +467,8 @@
             stacktotal = [],
             multi = 0,
             colors = opts.colors || chartinst.colors,
-            len = values.length;
+            len = values.length,
+            max = opts.max || "auto";
 
         if (Raphael.is(values[0], "array")) {
             total = [];
@@ -506,7 +508,7 @@
             bargutter = Math.floor(barheight * gutter / 100),
             stack = [],
             Y = y + bargutter,
-            X = (width - 1) / total;
+            X = (max=='auto')?(width - 1) / total : width / max;
 
         !opts.stacked && (barheight /= multi || 1);
 
